@@ -2,9 +2,10 @@
   "name": "clima-app",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node src/app.js",
+    "dev": "nodemon src/app.js"
   },
   "repository": {
     "type": "git",
@@ -15,5 +16,14 @@
   "bugs": {
     "url": "https://github.com/fbndv2403/clima-app/issues"
   },
-  "homepage": "https://github.com/fbndv2403/clima-app#readme"
+  "homepage": "https://github.com/fbndv2403/clima-app#readme",
+  "dependencies": {
+    "axios": "^0.24.0",
+    "colors": "^1.4.0",
+    "dotenv": "^10.0.0",
+    "inquirer": "^8.2.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.14"
+  }
 }
