@@ -13,6 +13,14 @@ class Busquedas {
     };
   }
 
+  get paramsWheather() {
+    return {
+      appid: process.env.OPEN_WEATHER_KEY,
+      units: "metric",
+      lang: "es",
+    };
+  }
+
   async ciudad(ciudad = "") {
     try {
       const intance = axios.create({
@@ -29,6 +37,26 @@ class Busquedas {
     } catch (error) {
       return [];
     }
+  }
+
+  async climaCiudad(lat, lon) {
+    try {
+      const response = axios.create({
+        baseURL: `https://api.openweathermap.org/data/2.5/weather`,
+        params: { ...this.paramsWheather, lat, lon },
+      });
+      const res = await response.get();
+      const { weather, main } = res.data;
+      return {
+        desc: weather[0].description,
+        temp: main.temp,
+        min: main.temp_min,
+        max: main.temp_max,
+      };
+    } catch (error) {
+      console.log(error);
+    }
+    // return `latitud: ${lat}\nlongitud: ${lon}`;
   }
 }
 
